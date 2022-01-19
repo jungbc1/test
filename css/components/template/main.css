@@ -1,0 +1,21 @@
+#main {
+    padding-top: calc(50px + 20px);
+    /* nav 50px + 추가여백 20px */
+}
+.main_content {
+    width: 1100px;
+    height: auto;
+    margin: 0 auto;
+}
+@media screen and (max-width: 1200px) {
+    .main_content {
+        width: 100%;
+        height: auto;
+    }
+}
+@media screen and (max-width: 768px) {
+    .main_content {
+        width: 100%;
+        height: auto;
+    }
+}

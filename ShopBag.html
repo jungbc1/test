@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <nav id="nav">
+        <h1>Books</h1>
+    </nav>
+
+    <main id="main">
+        <section class="main_content">
+            <div id="cart_items">
+                <form>
+                    <table border="1">
+                        <tr>
+                            <th></th>
+                            <th>상품정보</th>
+                            <th>판매가</th>
+                            <th>수량</th>
+                            <th>합계</th>
+                            <th>상태</th>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="a_book" id="check_a_book"></td>
+                            <td><a href="#"><img src="./img/book_sample.jpg" alt="book"></a></td>
+                            <td>17,000</td>
+                            <td>
+                                <!-- <input type="number" min="1" max="10" value="1"> -->
+                                <input type="text" name="book_ea" id="book_ea" value="1">
+                                <!-- <button>▲</button>
+                                <button>▼</button> -->
+                                <input type="button" value="▲" id="book_ea_up">
+                                <input type="button" value="▼" id="book_ea_down">
+                            </td>
+                            <td>17,000</td>
+                            <td>정상/품절</td>
+                        </tr>
+                    </table>
+                    <div id="select_controler">
+                        <input type="checkbox" name="all_book" id="check_all_book">
+                        <label for="check_all_book">전체선택</label>
+                        <button>선택상품삭제</button>
+                    </div>
+                </form>
+            </div>
+            <div id="order_info">
+                <div id="total_sum">금액 합계 : 17,000</div>
+                <div id="btn_area">
+                    <button>비회원주문</button>
+                    <button>회원주문</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
