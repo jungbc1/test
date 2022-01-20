@@ -1,10 +1,10 @@
-/* font : Noto Snas(100,300,500,700,900) /
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;500;700;900&display=swap%27);
+/* font : Noto Snas(100,300,500,700,900) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;500;700;900&display=swap');
 
-/ template */
+/* template */
 @import "./components/template/nav.css";
 @import "./components/template/main.css";
-
+@import "./components/template/footer.css";
 
 * {
     box-sizing: border-box;
@@ -15,19 +15,22 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
 }
 a {
-    font-size: 18px;
+    font-size: var(--link-font-);
 
-    /* reset /
+    /* reset */
     color: initial;
     text-decoration: none;
 }
 button {
-    font-size: 18px;
+    font-size: var(--button-font-);
 
-    / reset /
+    /* reset */
     border: none;
     background-color: transparent;
 
-    / pointer */
+    /* pointer */
     cursor: pointer;
+}
+svg {
+    width: var(--svg-width-);
 }

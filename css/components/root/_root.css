@@ -1,0 +1,14 @@
+/* 기존의 변수는 절대로 변경하시면 안됩니다. */
+:root {
+    --nav-backColor-: #808080;
+    --nav-menuFontColor-: #122236;
+
+    --header-backColor: #f1f1f1;
+    --header-color: #5C626A;
+
+    /* 표준 폰트입니다. */
+    --button-font-: 18px;
+    --link-font-: 18px;
+
+    --svg-width-: 30px;
+}
