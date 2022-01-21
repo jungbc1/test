@@ -7,88 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장바구니</title>
     <link rel="stylesheet" href="./css/styles.css">
-<style>
-#main{
-    width: 1070px;
-    margin: 0 auto;
-}
-.main_content{
-}
-.main_content > h2{
-    margin-top: 30px;
-}
-.cart_items{
-}
-#cart_table{
-    margin-top: 10px;
-    width: 100%;
-    border-collapse: collapse;
-}
-#cart_thead{
-    background-color: rgb(17, 112, 136);
-    color: white;
-    height: 40px;
-}
-#cart_table tr:last-child{
-    border-bottom: 1px solid #dadada;
-}
-#cart_table tr:nth-child(2n+3){
-    background-color: #eee;
-}
-#cart_table tr td{
-    font-weight: 300;
-    padding:5px;
-}
-#cart_table tr td #book_ea{
-    width: 40px;
-}
-#cart_table tr td:nth-child(6){
-    font-weight: bold;
-}
-#cart_table tr td:nth-child(n+4){
-    text-align: center;
-}
+    <link rel="stylesheet" href="./css/shopBag.css">
+    <script defer src="./js/shopBag.js"></script>
 
-#select_controler{
-    margin-top: 15px;
-    vertical-align: middle;
-}
-#select_remove{
-    height: 25px;
-    font-size: 14px;
-    padding: 0 5px;
-    border: 1px solid #D2D2D2;
-    margin-left: 20px;
-}
-#btn_area{
-    width: 100%;
-    text-align: right;
-}
-#total_sum{
-    text-align: right;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-#total_sum span {
-    color: #444;
-    padding-right: 10px;
-}
-
-#total_sum span+span {
-    color: #f74451;
-}
-#btn_area button{
-    height: 60px;
-    background-color: #808080;
-    color: white;
-    width: 30%;
-    font-weight: bold;
-}
-#btn_area button:nth-child(2){
-    background-color: teal;
-}
-
-</style>
 </head>
 
 <body>
@@ -157,7 +78,7 @@
         <section class="main_content">
             <h2>장바구니</h2>
             <div id="cart_items">
-                <form>
+                <form action="" method="GET" id="purchase">
                     <table id="cart_table">
                         <tr id="cart_thead">
                             <th></th>
@@ -173,8 +94,11 @@
                             <td><a href="#">돈의 흐름에 올라타라</a></td>
                             <td>17,000</td>
                             <td>
-                                <!-- <input type="number" min="1" max="10" value="1"> -->
-                                <input type="button" value="－" id="book_ea_down"><input type="text" name="book_ea" id="book_ea" value="1"><input type="button" value="＋" id="book_ea_up">
+                                <div>
+                                    <button type="button" onclick="book_ea_down(this)">－</button>
+                                    <input type="text" name="book_ea" value="1" id="book_ea1" onkeyup="enterkey(this)">
+                                    <button type="button" onclick="book_ea_up(this)">＋</button>
+                                </div>
                             </td>
                             <td>17,000</td>
                             <td>정상</td>
@@ -185,8 +109,11 @@
                             <td><a href="#">떠먹는 국어문법</a></td>
                             <td>16,000</td>
                             <td>
-                                <!-- <input type="number" min="1" max="10" value="1"> -->
-                                <input type="button" value="－" id="book_ea_down"><input type="text" name="book_ea" id="book_ea" value="1"><input type="button" value="＋" id="book_ea_up">
+                                <div>
+                                    <button type="button" onclick="book_ea_down(this)">－</button>
+                                    <input type="text" name="book_ea" value="1" id="book_ea2" onkeyup="enterkey(this)">
+                                    <button type="button" onclick="book_ea_up(this)">＋</button>
+                                </div>
                             </td>
                             <td>16,000</td>
                             <td>정상</td>
@@ -197,15 +124,18 @@
                             <td><a href="#">하루 한 장 마음챙김 긍정 확언 필사집</a></td>
                             <td>20,000</td>
                             <td>
-                                <!-- <input type="number" min="1" max="10" value="1"> -->
-                                <input type="button" value="－" id="book_ea_down"><input type="text" name="book_ea" id="book_ea" value="0"><input type="button" value="＋" id="book_ea_up">
+                                <div>
+                                    <button type="button" onclick="book_ea_down(this)">－</button>
+                                    <input type="text" name="book_ea" value="0" id="book_ea3" onkeyup="enterkey(this)">
+                                    <button type="button" onclick="book_ea_up(this)">＋</button>
+                                </div>
                             </td>
                             <td>0</td>
                             <td>품절</td>
                         </tr>
                     </table>
                     <div id="select_controler">
-                        <input type="checkbox" name="all_book" id="check_all_book">
+                        <input type="checkbox" name="all_book" id="check_all_book" onclick="check_all(this)">
                         <label for="check_all_book">전체선택</label>
                         <button type="button" id="select_remove">선택상품삭제</button>
                     </div>
@@ -213,11 +143,11 @@
             </div>
             <div id="order_info">
                 <div id="total_sum">
-                    <span>총 주문 금액</span><span>34,000</span>
+                    <span>총 주문 금액</span><span id="order_sum">33,000</span>
                 </div>
                 <div id="btn_area">
-                    <button>비회원주문</button>
-                    <button>회원주문</button>
+                    <button type="submit" form="purchase">비회원주문</button>
+                    <button type="submit" form="purchase">회원주문</button>
                 </div>
             </div>
         </section>
