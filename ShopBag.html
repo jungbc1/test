@@ -78,6 +78,7 @@
         <section class="main_content">
             <h2>장바구니</h2>
             <div id="cart_items">
+                <!-- onsubmit="return false" input콘트롤 액션시 제출을 막음 -->
                 <form action="" method="GET" id="purchase">
                     <table id="cart_table">
                         <tr id="cart_thead">
@@ -89,7 +90,7 @@
                             <th>상태</th>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="a_book" id="check_a_book"></td>
+                            <td><input type="checkbox" name="a_book" id="check_a_book" onclick="toggle_box()" checked></td>
                             <td><a href="#"><img src="./img/book_sample1.jpg" alt="book"></a></td>
                             <td><a href="#">돈의 흐름에 올라타라</a></td>
                             <td>17,000</td>
@@ -104,7 +105,7 @@
                             <td>정상</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="a_book" id="check_a_book"></td>
+                            <td><input type="checkbox" name="a_book" id="check_a_book" onclick="toggle_box()" checked></td>
                             <td><a href="#"><img src="./img/book_sample2.jpg" alt="book"></a></td>
                             <td><a href="#">떠먹는 국어문법</a></td>
                             <td>16,000</td>
@@ -119,7 +120,7 @@
                             <td>정상</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" name="a_book" id="check_a_book"></td>
+                            <td><input type="checkbox" name="a_book" id="check_a_book" onclick="toggle_box()" checked></td>
                             <td><a href="#"><img src="./img/book_sample3.jpg" alt="book"></a></td>
                             <td><a href="#">하루 한 장 마음챙김 긍정 확언 필사집</a></td>
                             <td>20,000</td>
@@ -137,7 +138,7 @@
                     <div id="select_controler">
                         <input type="checkbox" name="all_book" id="check_all_book" onclick="check_all(this)">
                         <label for="check_all_book">전체선택</label>
-                        <button type="button" id="select_remove">선택상품삭제</button>
+                        <button type="button" onclick="remove_cart()" id="select_remove">선택상품삭제</button>
                     </div>
                 </form>
             </div>
