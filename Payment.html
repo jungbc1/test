@@ -7,6 +7,7 @@
     <title>주문결제</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/payment.css">
+    <script defer src="./js/payment.js"></script>
 </head>
 <body>
     <nav id="nav">
@@ -68,62 +69,89 @@
             </div>
         </div>
     </div>
+    <div id="main">
         <section class="main_content">
             <h2>주문결제</h2>
             <form action="">
-                <!-- 주문결제 폼 (비회원전용) -->
-                <div id="guest_info">
-                    <p><span>주문자 이름</span><input type="text" name="guest_name"></p>
-                    <p><span>주문자 이메일</span><input type="email" name="guest_email"></p>
-                    <p><span>주문자 휴대폰</span><input type="tel" name="guest_phone"></p>
-                    <p><span>주문조회 비밀번호</span><input type="password" name="guest_pw1"></p>
-                    <p><span>비밀번호 확인</span><input type="password" name="guest_pw2"></p>
-                </div>
-                <!-- 배송정보 폼 (비회원전용) -->
-                <div id="delivery_info">
-                    <p><input type="checkbox" name="correct_guest" checked></p>
-                    <p><span>이름</span><input type="text" name="deliv_name"></p>
-                    <p><span>휴대폰</span><input type="tel" name="deliv_phone"></p>
-                    <p><span>우편번호</span><input type="text" name="deliv_postnum"><button>검색</button></p>
-                    <p><span>상세주소</span><input type="text" name="deliv_addr"></p>
-                </div>
                 <!-- 주문상품 -->
                 <div id="products">
+                    <h3>주문상품</h3>
                     <div>
                         <a href="#"><img src="./img/book_sample1.jpg" alt="book"></a>
-                        <p>돈의 흐름에 올라타라</p>
-                        <p>17,000</p>
-                        <p>1</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        <div>
+                            <p>돈의 흐름에 올라타라</p>
+                            <p><span>주문금액</span>17,000</p>
+                            <p><span>수량</span>1</p>
+                        </div>
                     </div>
                     <div>
                         <a href="#"><img src="./img/book_sample2.jpg" alt="book"></a>
-                        <p>떠먹는 국어문법</p>
-                        <p>16,000</p>
-                        <p>1</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <div>
+                            <p>떠먹는 국어문법</p>
+                            <p><span>주문금액</span>16,000</p>
+                            <p><span>수량</span>1</p>
+                        </div>
+                    </div>
+                    <div id="total">
+                        <p><span>결제예정금액</span><span>34,000원</span></p>
+                        <input type="checkbox" name="agree1" id="agree1">
+                        <label for="agree1">비회원 개인정보 수집 및 이용동의(필수)</label><br>
+                        <input type="checkbox" name="agree2" id="agree2">
+                        <label for="agree2">주문내역확인 동의(필수)</label><br>
+                        <button>결제하기</button>
+                        <button>장바구니가기</button>
                     </div>
                 </div>
-                <!-- 결제정보 -->
-                <div id="payment_info">
-                    <div id="select_pay">
-                        <button>신용카드</button>
-                        <button>네이버페이</button>
-                        <button>카카오페이</button>
+                <div id="right_box">
+                    <!-- 주문결제 폼 (비회원전용) -->
+                    <div id="guest_info">
+                        <h3>주문정보</h3>
+                        <p><span>주문자 이름</span><input type="text" name="guest_name"></p>
+                        <p><span>주문자 이메일</span><input type="email" name="guest_email"></p>
+                        <p><span>주문자 휴대폰</span><input type="tel" name="guest_phone"></p>
+                        <p><span>주문조회 비밀번호</span><input type="password" name="guest_pw1"></p>
+                        <p><span>비밀번호 확인</span><input type="password" name="guest_pw2"></p>
                     </div>
-                    <!-- 카드, 페이 둘중한가지로 분기 -->
-                    <div id="cards">
-                        <input type="radio" name="card" id="samsung_card">
-                        <input type="radio" name="card" id="hyundae_card">
-                        <input type="radio" name="card" id="sinhan_card">
+                    <!-- 배송정보 폼 (비회원전용) -->
+                    <div id="delivery_info">
+                        <h3>배송정보</h3>
+                        <p>주문자와 동일<input type="checkbox" id="correct_user" name="correct_guest" checked>
+                        <label for="correct_user"></label>
+                        </p>
+                        <p><span>이름</span><input type="text" name="deliv_name"></p>
+                        <p><span>휴대폰</span><input type="tel" name="deliv_phone"></p>
+                        <p><span>우편번호</span><input type="text" name="deliv_postnum" id="addr"><button>검색</button></p>
+                        <p><span>상세주소</span><input type="text" name="deliv_addr"></p>
                     </div>
-                    <div id="pays">
-                        <label><input type="radio" name="pay" id="naver_pay">112344</label>
-                        <input type="radio" name="pay" id="kakao_pay">
+                    <!-- 결제정보 -->
+                    <div id="payment_info">
+                        <h3>결제정보</h3>
+                        <!-- <div id="select_pay">
+                            <button>신용카드</button>
+                            <button>네이버페이</button>
+                            <button>카카오페이</button>
+                        </div> -->
+                        <!-- 카드, 페이 둘중한가지로 분기 -->
+                        <div id="cards">
+                            <a href='javascript:void(0);'><img src="./img/icon_card_1.png" alt="카드" onclick='preventClick(event)'>신한카드</a>
+                            <a href='javascript:void(0);'><img src="./img/icon_card_4.png" alt="카드" onclick='preventClick(event)'>현대카드</a>
+                            <a href='javascript:void(0);'><img src="./img/icon_card_7.png" alt="카드" onclick='preventClick(event)'>삼성카드</a>
+                        </div>
+                        <div id="pays">
+                            <a href='javascript:void(0);'><img src="./img/icon_pay_1.png" alt="페이" onclick='preventClick(event)'>네이버페이</a>
+                            <a href='javascript:void(0);'><img src="./img/icon_pay_2.png" alt="페이" onclick='preventClick(event)'>카카오페이</a>
+                        </div>
                     </div>
                 </div>
+
             </form>
         </section>
-
-
+    </div>
     <footer id="footer">
         <section id="footer-sizer">
             <div>
