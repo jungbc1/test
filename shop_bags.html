@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>구매내역</title>
+    <title>장바구니</title>
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/MyBills.css">
+    <link rel="stylesheet" href="./css/shop_bags.css">
+    <script defer src="./js/shop_bags.js"></script>
+
 </head>
+
 <body>
     <!-- nav 는 z-index 99 -->
     <nav id="nav">
@@ -70,74 +74,85 @@
         </div>
     </div>
 
-    <main id="main">
-        <section class="main_content">
-            <h2>구매내역</h2>
-            <p><span>홍길동</span><span id="rank">(VVIP)</span><span>님의 구매내역</span></p>
-            <div id="select_period">
-                <span>기간조회</span>
-                <button type="button">1주</button>
-                <button type="button" class="active">1개월</button>
-                <button type="button">3개월</button>
-                <button type="button">6개월</button>
-                <button type="button">조회</button>
-            </div>
-            <div id="notice">
-                <ul>
-                    <li>최근 1개월이 기본으로 조회 되며, 기간 변경시 기간 선택한 후 조회버튼을 클릭해 주세요.</li>
-                    <li>한번에 조회 가능한 기간은 최근 6개월까지 입니다.</li>
-                </ul>
-            </div>
-            <div id="prd_list">
-                <table id="prd_table">
-                    <tr id="prd_thead">
-                        <th>주문번호</th>
-                        <th>주문금액</th>
-                        <th colspan="2">상품정보</th>
-                        <th>수량</th>
-                        <th>주문상태</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="#">02243291</a>
-                        </td>
-                        <td>17,000</td>
-                        <td>
-                            <a href="#" id="book1"><img src="./img/book_sample1.jpg" alt="책"><span></span></a>
-                        <td>
-                            <a href="#">돈의 흐름에 올라타라</a>
-                            <button type="button">리뷰등록</button>
-                        </td>
-                        </td>
-                        <td>1</td>
-                        <td>
-                            <p>배송완료</p>
-                            <a href="#">배송조회</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="#">02345348</a>
-                        </td>
-                        <td>16,000</td>
-                        <td>
-                            <a href="#" id="book1"><img src="./img/book_sample2.jpg" alt="책"></a>
-                        </td>
-                        <td>
-                            <a href="#">떠먹는 국어문법</a>
-                        </td>
-                        <td>1</td>
-                        <td>
-                            <p>배송중</p>
-                            <a href="#">배송조회</a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+        <section class="main-sizer">
+            <section class="shop_content">
+                <h2>장바구니</h2>
+                <div id="cart_items">
+                    <!-- onsubmit="return false" input콘트롤 액션시 제출을 막음 -->
+                    <form action="" method="GET" id="purchase">
+                        <table id="cart_table">
+                            <tr id="cart_thead">
+                                <th></th>
+                                <th colspan="2">상품정보</th>
+                                <th>판매가</th>
+                                <th>수량</th>
+                                <th>주문금액</th>
+                                <th>상태</th>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="a_book" id="check_a_book" onclick="toggle_box()" checked></td>
+                                <td><a href="#"><img src="./assets/img/book_sample1.jpg" alt="book"></a></td>
+                                <td><a href="#">돈의 흐름에 올라타라</a></td>
+                                <td>17,000</td>
+                                <td>
+                                    <div>
+                                        <button type="button" onclick="book_ea_down(this)">－</button>
+                                        <input type="text" name="book_ea" value="1" id="book_ea1" onkeyup="enterkey(this)">
+                                        <button type="button" onclick="book_ea_up(this)">＋</button>
+                                    </div>
+                                </td>
+                                <td>17,000</td>
+                                <td>정상</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="a_book" id="check_a_book" onclick="toggle_box()" checked></td>
+                                <td><a href="#"><img src="./assets/img/book_sample2.jpg" alt="book"></a></td>
+                                <td><a href="#">떠먹는 국어문법</a></td>
+                                <td>16,000</td>
+                                <td>
+                                    <div>
+                                        <button type="button" onclick="book_ea_down(this)">－</button>
+                                        <input type="text" name="book_ea" value="1" id="book_ea2" onkeyup="enterkey(this)">
+                                        <button type="button" onclick="book_ea_up(this)">＋</button>
+                                    </div>
+                                </td>
+                                <td>16,000</td>
+                                <td>정상</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="a_book" id="check_a_book" onclick="toggle_box()" checked></td>
+                                <td><a href="#"><img src="./assets/img/book_sample3.jpg" alt="book"></a></td>
+                                <td><a href="#">하루 한 장 마음챙김 긍정 확언 필사집</a></td>
+                                <td>20,000</td>
+                                <td>
+                                    <div>
+                                        <button type="button" onclick="book_ea_down(this)">－</button>
+                                        <input type="text" name="book_ea" value="0" id="book_ea3" onkeyup="enterkey(this)">
+                                        <button type="button" onclick="book_ea_up(this)">＋</button>
+                                    </div>
+                                </td>
+                                <td>0</td>
+                                <td>품절</td>
+                            </tr>
+                        </table>
+                        <div id="select_controler">
+                            <input type="checkbox" name="all_book" id="check_all_book" onclick="check_all(this)">
+                            <label for="check_all_book">전체선택</label>
+                            <button type="button" onclick="remove_cart()" id="select_remove">선택상품삭제</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="order_info">
+                    <div id="total_sum">
+                        <span>총 주문 금액</span><span id="order_sum">33,000</span>
+                    </div>
+                    <div id="btn_area">
+                        <button type="submit" form="purchase">비회원주문</button>
+                        <button type="submit" form="purchase">회원주문</button>
+                    </div>
+                </div>
+            </section>
         </section>
-    </main>
-
-
     <footer id="footer">
         <section id="footer-sizer">
             <div>
@@ -226,4 +241,5 @@
         </section>
     </footer>
 </body>
+
 </html>
